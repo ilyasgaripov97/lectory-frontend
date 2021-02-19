@@ -1,0 +1,14 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field__label {
+  margin-bottom: 4px;
+}
+
+.input-field__input {
+  height: 48px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
