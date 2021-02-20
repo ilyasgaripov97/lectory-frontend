@@ -8,6 +8,7 @@ import {
 
 
 import RestorePassword from './components/RestorePassword';
+import ChangePassword from './components/ChangePassword';
 import Welcome from './components/Welcome';
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
         <Route path="/restore" exact>
           <div className="App container">
             <RestorePassword />
+          </div>
+        </Route>
+        <Route path="/change-password" exact>
+          <div className="App container">
+            <ChangePassword />
           </div>
         </Route>
         <Route path="/home" exact>
@@ -29,10 +35,8 @@ function App() {
             <Welcome />
           </div>
         </Route>
-        
       </Switch>
     </Router>
-
   );
 }
 

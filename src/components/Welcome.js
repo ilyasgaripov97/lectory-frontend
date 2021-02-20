@@ -5,9 +5,24 @@ import InputField from './InputField';
 import Button from './Button';
 
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 
-const Welcome = () => {
+const Welcome = ({ handleOnClick }) => {
+
+  useEffect(() => {
+    fetch("http://..")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }, [])
+
   return (
     <div>
       <Card>
