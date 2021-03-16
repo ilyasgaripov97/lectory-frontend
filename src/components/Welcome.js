@@ -6,35 +6,40 @@ import Button from './Button';
 
 import { Link, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { base } from '../utils/urls'
 
-
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-      var cookies = document.cookie.split(';');
-      for (var i = 0; i < cookies.length; i++) {
-          var cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-          }
-      }
-  }
-  return cookieValue;
-}
 
 const Welcome = ({ handleOnClick }) => {
-  const csrftoken = getCookie('csrftoken');
-  let [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
 
-    fetch("http://127.0.0.1:8000/api/examples/", {
+    fetch("http://127.0.0.1:5000/signup", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: 'ilyas', password: "garipov" })
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setLoggedIn(true)
+          localStorage.setItem('token', result)
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+
+    // const bearer = 'Bearer' + localStorage.getItem('token')
+    const bearer = `Bearer ${localStorage.getItem('token')}`
+    console.log(bearer);
+    fetch("http://127.0.0.1:5000/secret", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken,
+        'Authorization': bearer,  
       },
     })
       .then(res => res.json())
@@ -46,29 +51,9 @@ const Welcome = ({ handleOnClick }) => {
           console.log(error);
         }
       )
-  
-
-    // fetch("http://127.0.0.1:8000/api/examples/", {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'X-CSRFToken': csrftoken,
-    //   },
-    //   body: JSON.stringify({ name: 'qqq'})
-    // })
-    //   .then(res => res.json())
-    //   .then(
-    //     (result) => {
-    //       console.log(result.Error);
-    //       if (result.Error === null) setLoggedIn(true); 
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //     }
-    //   )
-
-
+      
   }, [])
+
   return (
     <div>
       <Card>

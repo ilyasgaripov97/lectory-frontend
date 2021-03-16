@@ -26,10 +26,18 @@ function App() {
           </div>
         </Route>
         <Route path="/home" exact>
+          
+
           <div className="App container">
+            {localStorage.getItem('token') ?
             <h1>Home page</h1>
+            :
+            <h1>Unauthorized access to the home page</h1>
+            }
           </div>
+          
         </Route>
+        
         <Route path="/">
           <div className="App container">
             <Welcome />
