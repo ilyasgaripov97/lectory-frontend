@@ -10,6 +10,7 @@ import {
 import RestorePassword from '../RestorePassword/RestorePassword';
 import ChangePassword from '../ChangePassword/ChangePassword.jsx';
 import Welcome from '../Welcome/Welcome';
+import Home from '../Home/Home';
 
 import useToken from './useToken';
 
@@ -51,9 +52,7 @@ function App() {
         
         <Route path="/" exact>
           {token ?
-          <div className="App container">
-            <h1>Home page</h1>
-          </div>
+            <Home/>
           : renderWelcomeCard()
           }
         </Route>

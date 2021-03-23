@@ -20,6 +20,17 @@ async function loginUser(credentials) {
     .then(data => data.json())
 }
 
+async function signupUser(credentials) {
+  return fetch('http://localhost:8000/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(credentials),
+  })
+    .then(data => data.json())
+}
+
 const Welcome = ({ setToken }) => {
 
   const [username, setUserName] = useState();
@@ -32,8 +43,18 @@ const Welcome = ({ setToken }) => {
       username,
       password,
     })
-
+    console.log(token);
     setToken(token)
+  }
+
+  const handleSignupSubmit = async e => {
+    e.preventDefault();
+
+    const response = await signupUser({
+       username, password
+    });
+
+    console.log(response);
   }
 
   return (
@@ -44,7 +65,7 @@ const Welcome = ({ setToken }) => {
         <InputField setField={setUserName} label={"Электронная почта"} type={"email"} placeholder="yammy@gmail.com" />
         <InputField setField={setPassword} label={"Пароль"} type={"password"} placeholder="yoursecret" />
         <Button handleClick={handleLoginSubmit} text={"Войти"} isUpper={true} isPrimary={true} hasMargin={true}/>
-        <Button text={"Создать аккаунт"} isUpper={true} isAccent={true} hasMargin={true} />
+        <Button handleClick={handleSignupSubmit} text={"Создать аккаунт"} isUpper={true} isAccent={true} hasMargin={true} />
       </Card>
     </div>
   )
