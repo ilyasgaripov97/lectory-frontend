@@ -1,7 +1,7 @@
 import './Button.css'
 
 
-const Button = ({text, isPrimary, isAccent, isUpper, height, hasMargin}) => {
+const Button = ({text, handleClick, isPrimary, isAccent, isUpper, height, hasMargin}) => {
   let className = "btn";
 
   className += isPrimary ? " btn-primary" : "";
@@ -11,7 +11,7 @@ const Button = ({text, isPrimary, isAccent, isUpper, height, hasMargin}) => {
 
   return (
     <>
-      <button 
+      <button onClick={handleClick}
         className={className} 
         style={{ height, }}
       >

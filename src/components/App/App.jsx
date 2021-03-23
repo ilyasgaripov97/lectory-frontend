@@ -7,11 +7,25 @@ import {
 } from 'react-router-dom';
 
 
-import RestorePassword from './components/RestorePassword';
-import ChangePassword from './components/ChangePassword';
-import Welcome from './components/Welcome';
+import RestorePassword from '../RestorePassword/RestorePassword';
+import ChangePassword from '../ChangePassword/ChangePassword.jsx';
+import Welcome from '../Welcome/Welcome';
+
+import useToken from './useToken';
+
 
 function App() {
+
+  const { token, setToken } = useToken();
+
+  const renderWelcomeCard = () => {
+    return (
+      <div className="App container">
+        <Welcome setToken={setToken}/>
+      </div>
+    )
+  }
+
   return (
     <Router>
       <Switch>
@@ -25,24 +39,25 @@ function App() {
             <ChangePassword />
           </div>
         </Route>
-        <Route path="/home" exact>
-          
 
+        <Route path="/profile" exact>
+          {token ?
           <div className="App container">
-            {localStorage.getItem('token') ?
-            <h1>Home page</h1>
-            :
-            <h1>Unauthorized access to the home page</h1>
-            }
+            <h1>Profile</h1>
           </div>
-          
+          : renderWelcomeCard()
+          }
         </Route>
         
-        <Route path="/">
+        <Route path="/" exact>
+          {token ?
           <div className="App container">
-            <Welcome />
+            <h1>Home page</h1>
           </div>
+          : renderWelcomeCard()
+          }
         </Route>
+
       </Switch>
     </Router>
   );

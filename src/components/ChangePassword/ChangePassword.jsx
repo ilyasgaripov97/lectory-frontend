@@ -1,8 +1,8 @@
-import Card from './Card';
-import Logo from './Logo';
-import Header from './Header';
-import InputField from './InputField';
-import Button from './Button';
+import Card from '../Card/Card';
+import Logo from '../Logo/Logo';
+import Header from '../Header/Header';
+import InputField from '../InputField/InputField';
+import Button from '../Button/Button';
 
 
 const ChangePassword = () => {
