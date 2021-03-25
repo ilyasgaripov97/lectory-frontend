@@ -31,6 +31,7 @@ async function signupUser(credentials) {
     .then(data => data.json())
 }
 
+
 const Welcome = ({ setToken }) => {
 
   const [username, setUserName] = useState();
@@ -43,7 +44,7 @@ const Welcome = ({ setToken }) => {
       username,
       password,
     })
-    console.log(token);
+
     setToken(token)
   }
 

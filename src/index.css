@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+p {
+  margin: 4px 0px;
+}
+
 a {
   text-decoration: none;
 }
@@ -38,3 +42,20 @@ a:hover {
 .margin-large {
   margin: 24px !important;
 }
+/* 
+button {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: #8268B9;
+  color: white;
+  border-radius: 4px;
+
+}
+
+.btn-accent {
+
+} */

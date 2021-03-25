@@ -11,6 +11,7 @@ import RestorePassword from '../RestorePassword/RestorePassword';
 import ChangePassword from '../ChangePassword/ChangePassword.jsx';
 import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
+import Profile from '../Profile/Profile'
 
 import useToken from './useToken';
 
@@ -44,7 +45,7 @@ function App() {
         <Route path="/profile" exact>
           {token ?
           <div className="App container">
-            <h1>Profile</h1>
+            <Profile/>
           </div>
           : renderWelcomeCard()
           }

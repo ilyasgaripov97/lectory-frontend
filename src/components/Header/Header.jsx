@@ -6,7 +6,6 @@ const Header = ({ titleText, hasMargin=true }) => {
   let className = "header";
 
   className += hasMargin ? " header__m-default" : "";
-  console.log(className);
   
   return (
     <div className={className}>
