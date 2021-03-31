@@ -1,3 +1,8 @@
 .material-wrapper {
   padding: 8px 0;
 }
+
+.material-preview-image {
+  height: 600px;
+  width: 100%;
+}

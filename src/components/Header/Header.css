@@ -1,3 +1,7 @@
 .header__m-default {
   margin: 16px 0;
 }
+
+.wrapper {
+  background-color: rgb(238, 238, 238);
+}

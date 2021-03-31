@@ -12,7 +12,7 @@ const Home = () => {
 
   return(
     <div className="wrapper">
-      <Card margin="small">
+      <Card>
         <header className="header">
           <h2>Лекторий</h2>
           <nav className="navbar">
@@ -24,14 +24,12 @@ const Home = () => {
 
       </Card>
       <main className="content">
-        <Card margin={"small"}>
-          <main>
+          <Card className="feed-wrapper" margin={"small"}>
             <Feed/>
-          </main>
-        </Card>
-        <Card margin={"small"}>
-          <Sidebar />
-        </Card>
+          </Card>
+          <Card className="sidebar-wrapper" margin={"small"}>
+            <Sidebar />
+          </Card>
       </main>
       
     </div>  
