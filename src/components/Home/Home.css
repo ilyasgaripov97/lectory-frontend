@@ -24,4 +24,14 @@
 
 .content {
   display: flex;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.feed-wrapper {
+  width: 960px;
+} 
+
+.wrapper {
+  background-color: rgb(238, 238, 238);
 }
