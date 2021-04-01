@@ -1,5 +1,6 @@
 import './Feed.css';
 import Material from './Material/Material';
+import MaterialForm from './Material/MaterialForm/MaterialForm'
 import { useState, useEffect } from 'react';
 
 import parseJwt from '../../../utils/jwt';
@@ -19,7 +20,6 @@ const Feed = () => {
     })
     const json = await response.json();
     setMaterials(json.data)
-
   }, [])
   
   const materialsList = () => {
@@ -31,6 +31,7 @@ const Feed = () => {
     <div className="feed-wrapper">
       <section className="materials-feed-container">
         <h3>Материалы</h3>
+        <MaterialForm setMaterials={setMaterials}/>
         {materialsList()}
       </section>
     </div>

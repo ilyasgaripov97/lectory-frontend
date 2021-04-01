@@ -1,7 +1,7 @@
 import './Button.css'
 
 
-const Button = ({text, handleClick, isPrimary, isAccent, isUpper, weight, height, hasMargin}) => {
+const Button = ({text, handleClick, type, isPrimary, isAccent, isUpper, weight, height, hasMargin}) => {
   let className = "btn";
 
   className += isPrimary ? " btn-primary" : "";
@@ -12,7 +12,8 @@ const Button = ({text, handleClick, isPrimary, isAccent, isUpper, weight, height
   return (
     <>
       <button onClick={handleClick}
-        className={className} 
+        className={className}
+        type={type}
         style={{ weight, height, }}
       >
         {text}
@@ -22,7 +23,8 @@ const Button = ({text, handleClick, isPrimary, isAccent, isUpper, weight, height
 }
 
 Button.defaultProps = {
-  height: "64px"
+  height: "64px",
+  type: "submit"
 }
 
 export default Button
