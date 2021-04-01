@@ -20,7 +20,6 @@ const Feed = () => {
     })
     const json = await response.json();
     setMaterials(json.data)
-
   }, [])
   
   const materialsList = () => {
@@ -32,7 +31,7 @@ const Feed = () => {
     <div className="feed-wrapper">
       <section className="materials-feed-container">
         <h3>Материалы</h3>
-        <MaterialForm/>
+        <MaterialForm setMaterials={setMaterials}/>
         {materialsList()}
       </section>
     </div>
