@@ -14,6 +14,7 @@ import Home from '../Home/Home';
 import Profile from '../Profile/Profile'
 
 import useToken from './useToken';
+import ImageDropbox from '../ImageDropbox/ImageDropbox';
 
 
 function App() {
@@ -53,9 +54,12 @@ function App() {
         
         <Route path="/" exact>
           {token ?
-            <Home/>
+            <Home />
           : renderWelcomeCard()
           }
+        </Route>
+        <Route path="/sandbox" exact>
+          <ImageDropbox />
         </Route>
 
       </Switch>

@@ -5,6 +5,7 @@ import parseJwt from '../../../../../utils/jwt';
 
 import InputField from '../../../../InputField/InputField';
 import Button from '../../../../Button/Button';
+import ImageDropbox from '../../../../ImageDropbox/ImageDropbox';
 
 
 const signupMaterial = async (material, id_user) => {
@@ -38,6 +39,7 @@ const MaterialForm = () => {
     <div className="material-form-wrapper">
       <form className="material-form" action="">
         <InputField setField={setTitle} label={"Заголовок материала"} type={"text"} placeholder="e.g Большой кот" />
+        <ImageDropbox/>
         <InputField setField={setBody} label={"Текст"} type={"text"} placeholder="e.g Любой текст" />
         <Button handleClick={handleMaterialSubmit} text="Новый кот?" isPrimary={true} isUpper={true}></Button>
       </form>
