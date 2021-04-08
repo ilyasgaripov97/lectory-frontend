@@ -47,33 +47,6 @@ const Profile = () => {
     }
   }
 
-  useEffect(async () => {
-    if (localStorage.getItem('token')) {
-      const jwtToken = parseJwt(localStorage.getItem('token'));
-      const id_user = jwtToken.id_user;
-      const json = await fetchPreferences(id_user);
-      console.log('Hide materials (start):', json.data.hide_materials);
-
-      setIsMaterialsHidden(json.data.hide_materials)
-    }
-  }, [])
-
-  const hideMaterials = async () => {
-
-    if (localStorage.getItem('token')) {
-      const jwtToken = parseJwt(localStorage.getItem('token'));
-      const id_user = jwtToken.id_user;
-
-      // Получаем текущие настройки установленные у пользователя
-      const json = await fetchPreferences(id_user)
-
-      // Изменяем их при клике на чекбокс
-      setPreferences(id_user, {hide_materials: !json.data.hide_materials});
-      setIsMaterialsHidden(!json.data.hide_materials)
-      console.log('Hide materials (on click):', !json.data.hide_materials);
-    }
-  }
-
   return (
     <div className="profile-wrapper">
       <Card margin="small">
@@ -87,7 +60,6 @@ const Profile = () => {
       <Card margin="small">
         <h3>Настройки</h3>
         <p>Скрывать материалы</p>
-        <Checkbox handleClick={hideMaterials} checked={isMaterialsHidden}/>
         {/* <Button handleClick={hideMaterials} text={"hide"}></Button> */}
       </Card>
 
