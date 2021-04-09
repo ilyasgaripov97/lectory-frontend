@@ -1,7 +1,7 @@
 import './Profile.css'
 
 import { useState, useEffect } from 'react'
-
+import { Link, Redirect } from 'react-router-dom'
 
 import parseJwt from '../../utils/jwt';
 import Card from '../Card/Card';
@@ -51,7 +51,9 @@ const Profile = () => {
     <div className="profile-wrapper">
       <Card margin="small">
         <div className="profile-wrapper__controls">
-          <div className="profile-wrapper__welcome">{welcome}</div>
+          <div className="profile-wrapper__welcome">
+            <Link to="/">{welcome}</Link>
+          </div>
           <div className="button-wrapper">
             <Button handleClick={logout} text={"Выйти"} height={"30px"} weight={"10px"} isUpper={true} isAccent={true} hasMargin={true} />
           </div>
