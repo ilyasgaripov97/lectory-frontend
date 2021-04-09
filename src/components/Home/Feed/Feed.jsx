@@ -24,7 +24,18 @@ const Feed = () => {
   
   const materialsList = () => {
     console.log(materials);
-    return materials.map((material, index) => <Material key={index} preview_image_path={material.preview_image_path} title={material.title} body={material.body}></Material>)
+    return materials.map(
+      (material, index) => 
+      <Material 
+        key={index}
+        id={material.id} 
+        preview_image_path={material.preview_image_path}
+        title={material.title} 
+        body={material.body}
+        materials={materials}
+        setMaterials={setMaterials}>
+      </Material>
+    )
   }
 
   return(

@@ -6,3 +6,14 @@
   height: 600px;
   width: 100%;
 } 
+
+.delete-material {
+  max-width: 100px;
+  margin: 5px 0px;
+}
+
+.material-wrapper__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
