@@ -4,7 +4,6 @@ import { useState } from 'react';
 import parseJwt from '../../../../../utils/jwt';
 import InputField from '../../../../InputField/InputField';
 import Button from '../../../../Button/Button';
-import ImageUploader from './ImageUploader/ImageUploader';
 
 
 const storeMaterial = async (id_user, data=null) => {
@@ -64,7 +63,6 @@ const MaterialForm = ({ setMaterials }) => {
 
   return(
     <div className="material-form-wrapper">
-      <ImageUploader></ImageUploader>
       <form className="material-form">
         <InputField 
           setField={setTitle} 

@@ -1,7 +1,7 @@
 import './InputField.css'
 
 
-const InputField = ({id, setField, label, type, handleChange, placeholder, name, withLabel, margin}) => {
+const InputField = ({id, label, type, handleChange, placeholder, name, withLabel, margin}) => {
   return (
     <div className="input-field" style={{ margin: margin }}>
       {withLabel && <label className="input-field__label" htmlFor={id}>{ label }</label>}
