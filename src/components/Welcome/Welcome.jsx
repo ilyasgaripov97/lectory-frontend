@@ -58,13 +58,21 @@ const Welcome = ({ setToken }) => {
     console.log(response);
   }
 
+  const handleUsernameChange = async e => {
+    setUserName(e.target.value)
+  }
+
+  const handlePasswordChange = async e => {
+    setPassword(e.target.value)
+  }
+
   return (
     <div>
       <Card>
         <Logo />
         <Header titleText={"Добро пожаловать"} />
-        <InputField setField={setUserName} label={"Электронная почта"} type={"email"} placeholder="yammy@gmail.com" />
-        <InputField setField={setPassword} label={"Пароль"} type={"password"} placeholder="yoursecret" />
+        <InputField handleChange={handleUsernameChange} label={"Электронная почта"} type={"email"} placeholder="yammy@gmail.com" />
+        <InputField handleChange={handlePasswordChange} label={"Пароль"} type={"password"} placeholder="yoursecret" />
         <Button handleClick={handleLoginSubmit} text={"Войти"} isUpper={true} isPrimary={true} hasMargin={true}/>
         <Button handleClick={handleSignupSubmit} text={"Создать аккаунт"} isUpper={true} isAccent={true} hasMargin={true} />
       </Card>
