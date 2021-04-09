@@ -7,15 +7,13 @@ import Button from '../../../../Button/Button';
 import ImageUploader from './ImageUploader/ImageUploader';
 
 
-const storeMaterial = async (material, id_user, file=null) => {
-  return fetch(`http://localhost:8000/user/${id_user}/materials/new`, {
+const storeMaterial = async (id_user, data=null) => {
+  const response = await fetch(`http://localhost:8000/user/${id_user}/materials/new`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(material),
+    body: data,
   })
-    .then(data => data.json())
+  const json = await response.json()
+  console.log(json);
 }
 
 const updateMaterials = async (setMaterials) => {
@@ -34,20 +32,34 @@ const updateMaterials = async (setMaterials) => {
 
 const MaterialForm = ({ setMaterials }) => {
 
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-  const [file, setFile] = useState(null);
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [currentFile, setCurrentFile] = useState(null);
 
   const handleMaterialSubmit = async e => {
     e.preventDefault();
 
     const id_user = parseJwt(localStorage.getItem('token')).id_user;
 
-    await storeMaterial({ material: {
-      title,
-      body,
-    }}, id_user)
+    const data = new FormData();
+    data.append('preview_image', currentFile);
+    data.append('title', title);
+    data.append('body', body);
+  
+    await storeMaterial(id_user, data)
     await updateMaterials(setMaterials);
+  }
+
+  const handleFileChange = async e => {
+    setCurrentFile(e.target.files[0]);
+  }
+  
+  const handleTitleChange = async e => {
+    setTitle(e.target.value)
+  }
+
+  const handleBodyChange = async e => {
+    setBody(e.target.value)
   }
 
   return(
@@ -58,6 +70,7 @@ const MaterialForm = ({ setMaterials }) => {
           setField={setTitle} 
           label={"Заголовок материала"} 
           type={"text"} 
+          handleChange={handleTitleChange}
           placeholder="e.g Большой кот" 
         />
         <InputField 
@@ -66,12 +79,14 @@ const MaterialForm = ({ setMaterials }) => {
           label={"Изображение"} 
           type={"file"} 
           name={"test"} 
+          handleChange={handleFileChange}
           placeholder="e.g Любой текст" 
         />
         <InputField 
           setField={setBody} 
           label={"Текст"} 
           type={"text"} 
+          handleChange={handleBodyChange}
           placeholder="e.g Любой текст"
         />
         <Button
