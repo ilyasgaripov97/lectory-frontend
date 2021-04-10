@@ -4,11 +4,14 @@ import MaterialForm from './Material/MaterialForm/MaterialForm'
 import { useState, useEffect } from 'react';
 
 import parseJwt from '../../../utils/jwt';
+import Button from '../../Button/Button';
 
 
 const Feed = () => {
   
   const [materials, setMaterials] = useState([]);
+  const [isCreateFormOpen, setIsCreateFormOpen] = useState(false)
+  const [createFormText, setCreateFormText] = useState('Создать')
 
   useEffect(async () => {
     const id_user = parseJwt(localStorage.getItem('token')).id_user;
@@ -38,11 +41,35 @@ const Feed = () => {
     )
   }
 
+  const getCreateButtonText = () => {
+    return isCreateFormOpen ? 'Создать' : 'Отменить';
+  } 
+
+  const handleFormOpening = () => { 
+    console.log(!isCreateFormOpen);
+    setIsCreateFormOpen(!isCreateFormOpen)
+    setCreateFormText(getCreateButtonText(isCreateFormOpen))
+  }
+
   return(
     <div className="feed-wrapper">
       <section className="materials-feed-container">
         <h3>Материалы</h3>
-        <MaterialForm setMaterials={setMaterials}/>
+        <div className="materials-feed-container__create">
+          {/* TODO refactor/fix spelling weight in button shoud be width */}
+          {
+            <Button 
+              hasMargin={true}
+              text={createFormText}
+              height="48px" 
+              weight="30px" 
+              handleClick={handleFormOpening}>
+            </Button>
+          }
+        </div>
+        {isCreateFormOpen &&
+          <MaterialForm setMaterials={setMaterials}/>
+        }
         {materialsList()}
       </section>
     </div>
