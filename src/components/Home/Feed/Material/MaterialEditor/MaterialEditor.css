@@ -1,0 +1,13 @@
+.material-editor__wrapper {
+
+}
+
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.material-editor {
+  background-color: rgb(238, 238, 238);
+  height: 100vh;
+}

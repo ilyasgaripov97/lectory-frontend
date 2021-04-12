@@ -1,6 +1,7 @@
 import './Material.css';
 import Button from '../../../Button/Button'
 
+import { Link } from 'react-router-dom';
 import parseJwt from '../../../../utils/jwt';
 
 
@@ -20,18 +21,20 @@ const Material = ({ id, title, body, preview_image_path, materials, setMaterials
   }
 
   return(
-    <div className="material-wrapper">
-      <header className="material-wrapper__header">
-      <h4>{title}</h4>
-      <div className="delete-material">
-        <Button isAccent={true} handleClick={handleRemove} height="24px" text="Удалить"></Button>
+      <div className="material-wrapper">
+        <header className="material-wrapper__header">
+        <h4>{title}</h4>
+        <div className="delete-material">
+          <Button isAccent={true} handleClick={handleRemove} height="24px" text="Удалить"></Button>
+        </div>
+        </header>
+
+        <Link to={`materials/${id}`}>
+          <img className="material-preview-image" src={preview_image_path} alt=""/>
+        </Link>
+        <p>{body}</p>
+
       </div>
-      </header>
-
-      <img className="material-preview-image" src={preview_image_path} alt=""/>
-      <p>{body}</p>
-
-    </div>
   )
 }
 

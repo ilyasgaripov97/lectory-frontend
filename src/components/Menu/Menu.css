@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__link {
+  margin-left: 16px;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+}
+
+.profile-link img{
+  margin-left: 8px;
+}

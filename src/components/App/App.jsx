@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from 'react-router-dom';
 
 
@@ -12,6 +12,7 @@ import ChangePassword from '../ChangePassword/ChangePassword.jsx';
 import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
 import Profile from '../Profile/Profile'
+import MaterialEditor from '../Home/Feed/Material/MaterialEditor/MaterialEditor'
 
 import useToken from './useToken';
 
@@ -27,6 +28,7 @@ function App() {
       </div>
     )
   }
+
 
   return (
     <Router>
@@ -59,7 +61,9 @@ function App() {
         </Route>
         <Route path="/sandbox" exact>
         </Route>
-
+        <Route path="/materials/:id_material">
+          <MaterialEditor></MaterialEditor>
+        </Route>
       </Switch>
     </Router>
   );

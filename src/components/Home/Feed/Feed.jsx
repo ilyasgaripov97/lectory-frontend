@@ -1,6 +1,7 @@
 import './Feed.css';
 import Material from './Material/Material';
 import MaterialForm from './Material/MaterialForm/MaterialForm'
+
 import { useState, useEffect } from 'react';
 
 import parseJwt from '../../../utils/jwt';
@@ -29,7 +30,7 @@ const Feed = () => {
     console.log(materials);
     return materials.map(
       (material, index) => 
-      <Material 
+      <Material
         key={index}
         id={material.id} 
         preview_image_path={material.preview_image_path}
@@ -54,7 +55,7 @@ const Feed = () => {
   return(
     <div className="feed-wrapper">
       <section className="materials-feed-container">
-        <h3>Материалы</h3>
+        <h3>Избранное</h3>
         <div className="materials-feed-container__create">
           {/* TODO refactor/fix spelling weight in button shoud be width */}
           {
@@ -68,7 +69,7 @@ const Feed = () => {
           }
         </div>
         {isCreateFormOpen &&
-          <MaterialForm setMaterials={setMaterials}/>
+          <MaterialForm setMaterials={setMaterials} handleFormOpeneing={handleFormOpening}/>
         }
         {materialsList()}
       </section>

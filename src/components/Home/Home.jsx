@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Feed from './Feed/Feed';
 import Sidebar from '../Sidebar/Sidebar';
+import Menu from '../Menu/Menu'
 
-
-import profileImage from '../../assets/images/profile.png'
 
 
 const Home = () => {
@@ -13,15 +12,7 @@ const Home = () => {
   return(
     <div className="wrapper">
       <Card>
-        <header className="header">
-          <h2>Лекторий</h2>
-          <nav className="navbar">
-            <Link className="navbar__link" to="/streams">Трансляции</Link>
-            <Link className="navbar__link" to="/materials">Материалы</Link>
-            <Link className="navbar__link profile-link" to="/profile">Профиль <img src={profileImage}></img></Link>
-          </nav>
-        </header>
-
+        <Menu />
       </Card>
       <main className="content">
         <Card className="feed-wrapper" margin={"small"}>

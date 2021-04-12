@@ -4,6 +4,7 @@ import { useState } from 'react';
 import parseJwt from '../../../../../utils/jwt';
 import InputField from '../../../../InputField/InputField';
 import Button from '../../../../Button/Button';
+import Textarea from '../../../../Textarea/Textarea'
 
 
 const storeMaterial = async (id_user, data=null) => {
@@ -29,7 +30,7 @@ const updateMaterials = async (setMaterials) => {
 }
 
 
-const MaterialForm = ({ setMaterials }) => {
+const MaterialForm = ({ setMaterials, handleFormOpeneing }) => {
 
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -47,6 +48,7 @@ const MaterialForm = ({ setMaterials }) => {
   
     await storeMaterial(id_user, data)
     await updateMaterials(setMaterials);
+    handleFormOpeneing()
   }
 
   const handleFileChange = async e => {
@@ -80,13 +82,16 @@ const MaterialForm = ({ setMaterials }) => {
           handleChange={handleFileChange}
           placeholder="e.g Любой текст" 
         />
-        <InputField
+        {/* <InputField
           setField={setBody} 
           label={"Текст"} 
           type={"text"} 
           handleChange={handleBodyChange}
           placeholder="e.g Любой текст"
-        />
+        /> */}
+        <Textarea withLabel={true} label="Текст" handleChange={handleBodyChange}>
+
+        </Textarea>
         <Button
           handleClick={handleMaterialSubmit} 
           type={"submit"} 
