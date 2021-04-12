@@ -80,7 +80,7 @@ const MaterialForm = ({ setMaterials }) => {
           handleChange={handleFileChange}
           placeholder="e.g Любой текст" 
         />
-        <InputField 
+        <InputField
           setField={setBody} 
           label={"Текст"} 
           type={"text"} 

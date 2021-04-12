@@ -7,8 +7,59 @@
   margin-bottom: 4px;
 }
 
-.input-field__input {
+input {
   height: 48px;
   padding: 8px 16px;
   box-sizing: border-box;
+}
+
+input[type="file"] {
+  padding: 5px 0px;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type="file"] {
+  color: transparent;
+}
+
+input[type="file"]::before {
+  content: 'Загрузить файл';
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+} 
+
+input:focus {
+  all: unset;
+  color: #fff;
+  padding: 8px 16px;
+  border: 2px solid rgb(90, 90, 90);
+}
+
+input[type="file"]:focus {
+  padding: 5px 0;
+}
+
+
+input[type="file"]:hover::before {
+  border-color: black;
+}
+input[type="file"]:active {
+  outline: 0;
+}
+input[type="file"]:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
 }
