@@ -23,4 +23,9 @@
   .margin-small {
     margin: 0;
   }
+  .card {
+    font-size: 9px;
+  }
+  
 }
+
