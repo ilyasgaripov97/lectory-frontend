@@ -11,3 +11,8 @@
   background-color: rgb(238, 238, 238);
   height: 100vh;
 }
+
+.material-image {
+  width: 100%;
+}
+

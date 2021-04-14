@@ -40,7 +40,7 @@ const MaterialEditor = () => {
       <div className="content-wrapper">
       <Card margin={"small"}>
         <h3>{title}</h3>
-        <img src={previewImagePath} alt=""/>
+        <img className="material-image" src={previewImagePath} alt=""/>
         <p>{body}</p>
       </Card>  
       </div>

@@ -17,7 +17,7 @@ const Home = () => {
       <main className="content">
         <Card className="feed-wrapper" margin={"small"}>
           <main>
-            <Feed/>
+            <Feed />
           </main>
         </Card>
         <Card className="sidebar-wrapper" margin={"small"}>
