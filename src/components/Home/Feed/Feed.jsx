@@ -8,24 +8,11 @@ import parseJwt from '../../../utils/jwt';
 import Button from '../../Button/Button';
 
 
-const Feed = () => {
+const Feed = ({ materials, setMaterials }) => {
   
-  const [materials, setMaterials] = useState([]);
   const [isCreateFormOpen, setIsCreateFormOpen] = useState(false)
   const [createFormText, setCreateFormText] = useState('Создать')
 
-  useEffect(async () => {
-    const id_user = parseJwt(localStorage.getItem('token')).id_user;
-    const response = await fetch(`http://localhost:8000/user/${id_user}/materials`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const json = await response.json();
-    setMaterials(json.data)
-  }, [])
-  
   const materialsList = () => {
     return materials.map(
       (material, index) => 

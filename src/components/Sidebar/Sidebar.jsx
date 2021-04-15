@@ -4,13 +4,19 @@ import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 
 
-const Sidebar = ({ materials }) => {
+const Sidebar = ({ materials, setMaterials }) => {
 
+  const like = (expect, actual) => actual.includes(expect)
+
+  const filterMaterials = (e) => {
+    const updatedMaterials = materials.filter(material => like(e.target.value, material.title));
+    setMaterials(updatedMaterials);
+  }
 
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-wrapper__searchbox">
-        <InputField label={"Искать"} withLabel={true}/>
+        <InputField handleChange={filterMaterials} handleBlur={filterMaterials} label={"Искать"} withLabel={true}/>
       </div>
       
       <p> 
