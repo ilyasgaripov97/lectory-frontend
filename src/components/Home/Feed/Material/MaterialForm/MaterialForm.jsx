@@ -82,13 +82,6 @@ const MaterialForm = ({ setMaterials, handleFormOpeneing }) => {
           handleChange={handleFileChange}
           placeholder="e.g Любой текст" 
         />
-        {/* <InputField
-          setField={setBody} 
-          label={"Текст"} 
-          type={"text"} 
-          handleChange={handleBodyChange}
-          placeholder="e.g Любой текст"
-        /> */}
         <Textarea withLabel={true} label="Текст" handleChange={handleBodyChange}>
 
         </Textarea>

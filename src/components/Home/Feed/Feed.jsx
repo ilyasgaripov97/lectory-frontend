@@ -27,7 +27,6 @@ const Feed = () => {
   }, [])
   
   const materialsList = () => {
-    console.log(materials);
     return materials.map(
       (material, index) => 
       <Material

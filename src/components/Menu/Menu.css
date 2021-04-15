@@ -22,6 +22,14 @@
   margin-left: 8px;
 }
 
+.header__home-link:hover {
+  text-decoration: none;
+}
+
+.header__home-link:visited {
+  color: #333;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .wrapper {

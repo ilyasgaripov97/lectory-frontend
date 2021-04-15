@@ -8,7 +8,7 @@ const Menu = () => {
   return (
     <div>
       <header className="header">
-        <h2>Лекторий</h2>
+        <h2><Link className="header__home-link" to="/">Лекторий</Link></h2>
         <nav className="navbar">
           <Link className="navbar__link" to="/streams">Трансляции</Link>
           <Link className="navbar__link" to="/materials">Материалы</Link>
