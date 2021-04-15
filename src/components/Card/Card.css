@@ -17,3 +17,15 @@
   padding: 16px;
   width: 100%;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .margin-small {
+    margin: 0;
+  }
+  .card {
+    font-size: 9px;
+  }
+  
+}
+
