@@ -15,6 +15,7 @@ const Home = () => {
 
   const [materials, setMaterials] = useState([]);
 
+  // TODO move fetch request into seaparate file, because it used in many places
   useEffect(async () => {
     const id_user = parseJwt(localStorage.getItem('token')).id_user;
     const response = await fetch(`http://localhost:8000/user/${id_user}/materials`, {

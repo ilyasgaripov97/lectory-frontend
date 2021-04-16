@@ -3,15 +3,32 @@ import './Sidebar.css'
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 
+import parseJwt from '../../utils/jwt';
+
+async function fetchMaterials () {
+  try {
+    const id_user = parseJwt(localStorage.getItem('token')).id_user;
+    const response = await fetch(`http://localhost:8000/user/${id_user}/materials`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 const Sidebar = ({ materials, setMaterials }) => {
 
   const like = (expect, actual) => actual.includes(expect)
 
-  const filterMaterials = (e) => {
+  const filterMaterials = async (e) => {
     if (e.target.value === '') {
-      window.location.reload();
-      console.log('empty searchbox');
+      const json = await fetchMaterials();
+      setMaterials(json.data)
+      return;
     }
     const updatedMaterials = materials.filter(material => like(e.target.value, material.title));
     setMaterials(updatedMaterials);
