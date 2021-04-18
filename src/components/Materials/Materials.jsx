@@ -13,7 +13,6 @@ const Materials = ({ materials, setMaterials }) => {
         <Card margin={"small"}>
         </Card>
       </div>
-      
     </div>
 
   )

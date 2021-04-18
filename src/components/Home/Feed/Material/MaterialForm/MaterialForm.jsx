@@ -7,13 +7,12 @@ import Button from '../../../../Button/Button';
 import Textarea from '../../../../Textarea/Textarea'
 
 
-const storeMaterial = async (id_user, data=null) => {
-  const response = await fetch(`http://localhost:8000/user/${id_user}/materials/new`, {
+const storeMaterial = async (id_user, data) => {
+  console.log(data);
+  await fetch(`http://localhost:8000/user/${id_user}/materials/new`, {
     method: 'POST',
     body: data,
   })
-  const json = await response.json()
-  console.log(json);
 }
 
 const updateMaterials = async (setMaterials) => {
