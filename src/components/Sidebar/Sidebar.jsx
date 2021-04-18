@@ -1,12 +1,47 @@
 import './Sidebar.css'
 
+import InputField from '../InputField/InputField';
+import Button from '../Button/Button';
 
-const Sidebar = () => {
+import parseJwt from '../../utils/jwt';
+
+async function fetchMaterials () {
+  try {
+    const id_user = parseJwt(localStorage.getItem('token')).id_user;
+    const response = await fetch(`http://localhost:8000/user/${id_user}/materials`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+const Sidebar = ({ materials, setMaterials }) => {
+
+  const like = (expect, actual) => actual.includes(expect)
+
+  const filterMaterials = async (e) => {
+    if (e.target.value === '') {
+      const json = await fetchMaterials();
+      setMaterials(json.data)
+      return;
+    }
+    const updatedMaterials = materials.filter(material => like(e.target.value, material.title));
+    setMaterials(updatedMaterials);
+  }
+
   return (
     <div className="sidebar-wrapper">
-      <h3>Sidebar</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis accusantium doloremque laudantium incidunt sint iusto nisi vitae impedit, delectus quidem sequi eveniet. Repudiandae, impedit sapiente sed magni ipsa odit atque laboriosam mollitia pariatur placeat earum cum beatae, eligendi possimus nemo veritatis exercitationem libero blanditiis sint! Enim obcaecati illum aperiam debitis corporis quas aspernatur voluptatem non est, ullam sint soluta, ea voluptatibus amet? Minima eius similique optio, sed autem omnis, soluta modi alias iste ad, facilis temporibus tempore inventore velit dolores animi deserunt possimus molestias distinctio? Ab nemo impedit odio excepturi, consectetur asperiores esse doloremque nobis distinctio adipisci explicabo et, laborum optio numquam nostrum? Sunt eligendi quaerat quisquam consequatur illo? Laudantium omnis illo esse ullam consequatur delectus dolore aut, sint ratione? Quidem, quos suscipit, velit voluptas nobis possimus maiores neque nam, natus culpa quis reprehenderit quod veritatis ea corrupti sit eum sint similique provident quasi. Non, nesciunt illo dolorem vitae in velit iste consequatur explicabo amet quisquam asperiores temporibus expedita, dolorum soluta possimus alias maiores, officia repellendus quis deserunt? Soluta aliquam labore suscipit ipsum enim vitae quidem tenetur rem saepe aut veniam aspernatur, molestiae iste voluptatum, excepturi mollitia repellat sint molestias ducimus necessitatibus exercitationem impedit? Ducimus incidunt unde animi neque quibusdam quidem maxime nesciunt vitae pariatur sapiente quo facere, fugit optio praesentium. Eum natus minima quisquam sint possimus deleniti odit libero veritatis voluptas qui porro facilis exercitationem omnis id ad aliquid delectus nam distinctio, ratione ea laudantium commodi voluptatem. Placeat iste repellat molestias vel ut fugiat esse rem temporibus, tempora dolores, officia libero distinctio praesentium aperiam autem accusantium earum sequi veritatis nostrum quod hic minus deleniti assumenda. Culpa quis ea a corrupti mollitia sed. Saepe, hic perspiciatis deserunt, dolorem accusantium minus temporibus ex aliquid ullam consectetur magni odio veritatis, soluta iste illo inventore obcaecati distinctio eos mollitia ut id? Veritatis officiis deleniti sit quaerat eos esse corrupti illo nesciunt quam eum. Dolorum nisi facere, perspiciatis cupiditate natus in molestias modi corporis impedit? Veritatis molestiae minus eaque eveniet amet doloremque ea numquam, repellat aliquid facilis adipisci quae saepe unde dolor maxime ab minima nemo sit libero voluptas? Doloremque accusamus aliquid neque dolores enim dolor error. Nulla, impedit! Minus earum commodi nobis molestiae ratione. Quas maxime, illum iure veritatis accusantium quaerat totam repellat vero aut doloribus perferendis laudantium, delectus ut soluta iste fugit laboriosam distinctio quia nostrum facilis dicta excepturi numquam a! Fugiat neque obcaecati sunt et eaque dolore consequatur? Non, sit vitae!
+      <div className="sidebar-wrapper__searchbox">
+        <InputField handleChange={filterMaterials} handleBlur={filterMaterials} label={"Искать"} withLabel={true}/>
+      </div>
+      
+      <p> 
+        
       </p>
     </div>
   )

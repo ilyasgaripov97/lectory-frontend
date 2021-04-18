@@ -8,8 +8,13 @@
 } 
 
 .delete-material {
-  max-width: 100px;
+  display: flex;
+  max-width: 400px;
   margin: 5px 0px;
+}
+
+.edit-button {
+  margin-right: 8px;
 }
 
 .material-wrapper__header {
