@@ -10,10 +10,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 
+const Home = ({ materials, setMaterials }) => {
 
-const Home = () => {
-
-  const [materials, setMaterials] = useState([]);
 
   // TODO move fetch request into seaparate file, because it used in many places
   useEffect(async () => {

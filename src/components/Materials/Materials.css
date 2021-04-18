@@ -1,0 +1,9 @@
+.materials-wrapper {
+  background-color: rgb(238, 238, 238);
+  min-height: 100vh;
+}
+
+.materials-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
