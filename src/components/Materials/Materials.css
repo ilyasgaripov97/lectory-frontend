@@ -8,16 +8,18 @@
   margin: 0 auto;
 }
 
-.category-cards {
+.materials-cards {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
 }
 
-.test-card {
-  flex-basis: 27em;
-  height: 500px;
-  background-color: #3d3d3d;
+.materials-cards__card {
+  border: 2px solid lavender;
+  width: 400px;
+  margin: 8px;
+}
+
+.category-cards__card {
   margin-bottom: 16px;
 }

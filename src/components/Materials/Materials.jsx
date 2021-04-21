@@ -2,15 +2,25 @@ import './Materials.css'
 
 import Card from '../Card/Card';
 import Menu from '../Menu/Menu';
+import Button from '../Button/Button';
 
 const Materials = ({ materials, setMaterials }) => {
 
-  const showMaterials = () => {
+  const materialsList = () => {
     console.log(materials);
+    return materials.map(
+      (material, index) =>
+      <div key={index} className="materials-cards__card">
+        <div className="materials-card">
+          <img src={material.preview_image_path} width="400" height="240" alt=""/>
+          <div className="materials-card__body">{material.body}</div>
+          <Button text="Добавить" isPrimary={true} height="20px"/>
+          
+        </div>
+      </div>
+    )
   }
-
-
-
+  
   return (
     <div className="materials-wrapper">
       <Card>
@@ -18,14 +28,8 @@ const Materials = ({ materials, setMaterials }) => {
       </Card>
       <div className="materials-content">
         <Card margin={"small"}>
-          <h3>История</h3>
-          <div className="category-cards">
-            <div className="test-card"></div>
-            <div className="test-card"></div>
-            <div className="test-card"></div>
-            <div className="test-card"></div>
-            <div className="test-card"></div>
-            <div className="test-card"></div>
+          <div className="materials-cards">
+            { materialsList() }
           </div>
         </Card>
       </div>
