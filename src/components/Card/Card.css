@@ -16,6 +16,7 @@
   flex-direction: column;
   padding: 16px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* Extra small devices (phones, 600px and down) */
