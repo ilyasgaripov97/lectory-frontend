@@ -6,28 +6,7 @@ import InputField from '../../../../InputField/InputField';
 import Button from '../../../../Button/Button';
 import Textarea from '../../../../Textarea/Textarea'
 
-
-const storeMaterial = async (id_user, data) => {
-  console.log(data);
-  await fetch(`http://localhost:8000/user/${id_user}/materials/new`, {
-    method: 'POST',
-    body: data,
-  })
-}
-
-const updateMaterials = async (setMaterials) => {
-  console.log('updating');
-  const id_user = parseJwt(localStorage.getItem('token')).id_user;
-  const response = await fetch(`http://localhost:8000/user/${id_user}/materials`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  const json = await response.json();
-  setMaterials(json.data);
-}
-
+import { storeMaterial, updateMaterials } from './requests';
 
 const MaterialForm = ({ setMaterials, handleFormOpeneing }) => {
 
